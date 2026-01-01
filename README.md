@@ -105,7 +105,10 @@ chmod +x start.sh
 
 ### Environment configuration
 
+The backend requires environment variables.
+
 ```bash
+cd server
 cp env.example .env
 ```
 
@@ -190,7 +193,10 @@ chmod +x start.sh
 
 ### Configuração de ambiente
 
+O backend necessita de variáveis de ambiente.
+
 ```bash
+cd server
 cp env.example .env
 ```
 
