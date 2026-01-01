@@ -95,8 +95,7 @@ chmod +x start.sh
 ---
 
 ## Demo
-
-🎥  
+ 
 https://github.com/user-attachments/assets/75dcecf5-9e81-425c-b6b1-46a63767bbd1
 
 
@@ -173,8 +172,7 @@ Não se destina a utilização clínica direta sem validação formal e enquadra
 ---
 
 ## Demonstração
-
-🎥  
+ 
 https://github.com/user-attachments/assets/75dcecf5-9e81-425c-b6b1-46a63767bbd1
 
 ---
