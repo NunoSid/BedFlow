@@ -1,4 +1,13 @@
-# BedFlow
+#<div align="center">
+  <img
+    src="https://github.com/user-attachments/assets/fe8a16bc-0ffb-4bc0-a64f-72467c2e7ed9"
+    width="672"
+    height="448"
+    alt="BedFlow logo"
+  />
+</div>
+
+
 **Clinical Handover & Bed Management Platform**
 
 > ⚠️ **Disclaimer**
