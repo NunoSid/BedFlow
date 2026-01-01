@@ -103,7 +103,8 @@ Os valores por defeito são adequados para desenvolvimento local.
 
 ## Contact
 
-- **Name:** Nuno Silva  
-- **Background:** Nursing & Clinical Operations  
-- **GitHub:** https://github.com/your-username  
-- **LinkedIn:** https://www.linkedin.com/
+- **Name:** Nuno da Silva Magalhães  
+- **Background:** Nursing & Clinical Operations
+- **Email:** nsilvalsd@gmail.com
+- **GitHub:** https://github.com/NunoSid 
+- **LinkedIn:** www.linkedin.com/in/nuno-da-silva-magalhães-421253199
