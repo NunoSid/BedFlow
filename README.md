@@ -149,7 +149,11 @@ The demo showcases:
 - Structured shift handover
 - Operational audit logging
 
-🎥 Demo video available in the repository.
+🎥 
+
+https://github.com/user-attachments/assets/874bae59-3add-41b2-8ee1-4f0f579df0b1
+
+
 
 ---
 
