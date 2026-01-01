@@ -7,49 +7,69 @@
   />
 </div>
 
+<p align="center">
+  <strong>Clinical Handover & Bed Management Platform</strong><br/>
+  <em>Plataforma de Passagem de Turno Clínica e Gestão de Camas</em>
+</p>
 
-**Clinical Handover & Bed Management Platform**
+<p align="center">
+  <img src="https://img.shields.io/badge/Frontend-React%20(Vite)-61DAFB?logo=react&logoColor=white" />
+  <img src="https://img.shields.io/badge/Backend-NestJS-E0234E?logo=nestjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/ORM-Prisma-2D3748?logo=prisma&logoColor=white" />
+  <img src="https://img.shields.io/badge/Database-SQLite%20%7C%20PostgreSQL-003B57" />
+  <img src="https://img.shields.io/badge/License-MIT-green" />
+  <img src="https://img.shields.io/badge/Status-Concept%20%2F%20Demo-blue" />
+</p>
+
+---
+
+<details open>
+<summary><strong>🇬🇧 English</strong></summary>
+
+<br/>
 
 > ⚠️ **Disclaimer**
 >
 > BedFlow is a **conceptual / demonstration project**.
-> It must **not** be used with real identifiable patient data (PHI) without proper security, compliance, and governance review.
+> It is designed for **clinical operations modelling and workflow exploration**.
+>  
+> It must **not** be used with real identifiable patient data (PHI) without appropriate security review, regulatory compliance, and information governance.
 
 ---
 
 ## Overview
 
-**BedFlow** is a clinical operations support platform designed **from a nurse’s perspective** to improve:
+**BedFlow** is a clinical operations support platform designed **from a nursing and care‑coordination perspective** to support:
 
-- Bed management and visibility
-- Structured clinical handover
-- Coordination across ambulatory and multi-service environments
-- Operational auditability and traceability
+- Bed capacity management and real‑time visibility  
+- Structured clinical handover between shifts and teams  
+- Coordination across ambulatory, inpatient, and multi‑service settings  
+- Operational auditability, traceability, and governance  
 
-The focus is operational clarity, continuity of care, and governance — not clinical decision-making.
+The platform focuses on **operational safety, continuity of care, and workflow reliability**, not on clinical decision‑making.
 
 ---
 
-## Who is this for?
+## Intended Audience
 
 BedFlow is intended for:
 
-- Nurses and nurse coordinators  
-- Clinical operations and bed management teams  
-- Health IT professionals  
-- Developers exploring clinical workflow platforms  
+- Nurses and nurse managers  
+- Bed management and clinical operations teams  
+- Health IT and digital health professionals  
+- Developers and architects exploring clinical workflow platforms  
 
-It is **not intended for direct clinical use** without validation and regulatory compliance.
+It is **not intended for direct clinical use** without formal validation and regulatory approval.
 
 ---
 
-## Key Features
+## Core Capabilities
 
-- **Bed management** – allocation, visibility, patient flow support  
-- **Shift handover** – structured updates and continuity between teams  
-- **Procedure / surgical planning** – operational alignment with capacity  
-- **Role-based access control (RBAC)** – Nurse / Coordinator / Admin  
-- **Audit & exports** – governance, traceability, and reporting  
+- **Bed management** – allocation, visibility, and patient flow support  
+- **Shift handover** – structured updates and continuity across teams  
+- **Procedure and theatre planning** – operational alignment with available capacity  
+- **Role‑based access control (RBAC)** – Nurse / Coordinator / Administrator  
+- **Audit and exports** – operational governance, traceability, and reporting  
 
 ---
 
@@ -65,115 +85,103 @@ Database (SQLite / PostgreSQL)
 
 ---
 
-## Technology Stack
-
-- **Frontend:** React (Vite)
-- **Backend:** NestJS
-- **ORM:** Prisma
-- **Database (default):** SQLite
-- **Optional DB:** PostgreSQL (via Docker Compose)
-
----
-
 ## Quick Start (Local Development)
-
-### Requirements
-
-- Node.js (LTS recommended)
-- npm
-- (Optional) Docker + Docker Compose (for PostgreSQL)
-
-### Run everything with one command
 
 ```bash
 chmod +x start.sh
 ./start.sh
 ```
 
-This script:
-
-- Installs dependencies in `server/` and `client/`
-- Runs `prisma:push` and `prisma:seed`
-- Starts backend at `http://localhost:1893`
-- Starts frontend (Vite dev server)
-
----
-
-## Configuration
-
-### Backend Environment Variables
-
-Typical variables:
-
-```env
-DATABASE_URL=
-JWT_SECRET=
-JWT_EXPIRES=2h
-CORS_ORIGIN=
-PORT=1893
-```
-
-#### Database URLs
-
-- **SQLite (default):**
-  ```
-  file:./prisma/bedflow.db
-  ```
-
-- **PostgreSQL:**
-  ```
-  postgresql://user:password@host:5432/db?schema=public
-  ```
-
----
-
-## Optional: PostgreSQL via Docker
-
-```bash
-export POSTGRES_USER=bedflow_admin
-export POSTGRES_PASSWORD='CHANGE_ME'
-export POSTGRES_DB=bedflow_prod
-
-docker compose up -d
-```
-
-Then update `DATABASE_URL` accordingly.
-
 ---
 
 ## Demo
 
-The demo showcases:
-
-- Bed allocation and distribution
-- Structured shift handover
-- Operational audit logging
-
-🎥 
-
+🎥  
 https://github.com/user-attachments/assets/874bae59-3add-41b2-8ee1-4f0f579df0b1
-
-
 
 ---
 
 ## Security Notes (Minimum)
 
-- Never expose database ports publicly
-- Use a strong `JWT_SECRET`:
-  ```bash
-  openssl rand -hex 32
-  ```
-- Restrict CORS to trusted frontend domains
-- Remove demo credentials in any real deployment
-- RBAC enforced server-side
-- Audit logs for critical operations
+- Do not expose database ports publicly  
+- Use a strong `JWT_SECRET`  
+- Restrict CORS to authorised frontend domains  
+- Remove demo credentials in any real deployment  
+- RBAC enforced server‑side  
+- Audit logging for critical operations  
 
 ---
 
 ## License
 
-MIT License.
+MIT License.  
+Free to use, modify, and learn from.  
+Not intended for production clinical use without appropriate validation.
 
-Free to use, modify, and learn from.
-Not intended for production clinical use without proper validation.
+</details>
+
+---
+
+<details>
+<summary><strong>🇵🇹 Português (Portugal)</strong></summary>
+
+<br/>
+
+> ⚠️ **Aviso Importante**
+>
+> O BedFlow é um **projeto conceptual / de demonstração**, orientado para modelação de operações clínicas.
+>  
+> **Não deve ser utilizado com dados reais identificáveis de utentes (PHI)** sem avaliação prévia de segurança, conformidade legal e adequada governação da informação.
+
+---
+
+## Visão Geral
+
+O **BedFlow** é uma plataforma de suporte à operação clínica, concebida **a partir da perspetiva da Enfermagem e da coordenação de cuidados**, com o objetivo de apoiar:
+
+- A gestão da capacidade e visibilidade de camas  
+- A passagem de turno estruturada entre equipas  
+- A coordenação em contexto de internamento, ambulatório e múltiplos serviços  
+- A rastreabilidade, auditoria e governação operacional  
+
+O foco da plataforma é a **segurança operacional**, a **continuidade de cuidados** e a **fiabilidade dos processos**, não a decisão clínica.
+
+---
+
+## Destinatários
+
+O BedFlow destina‑se a:
+
+- Enfermeiros e enfermeiros gestores  
+- Equipas de gestão de camas e operações clínicas  
+- Profissionais de Sistemas de Informação em Saúde  
+- Developers e arquitetos de soluções digitais em saúde  
+
+Não se destina a utilização clínica direta sem validação formal e enquadramento regulamentar.
+
+---
+
+## Funcionalidades Principais
+
+- **Gestão de camas** – alocação, visibilidade e apoio ao fluxo do doente  
+- **Passagem de turno** – comunicação estruturada e continuidade assistencial  
+- **Planeamento de procedimentos e atividade operatória** – alinhamento com a capacidade instalada  
+- **Controlo de acessos por perfis (RBAC)** – Enfermeiro / Coordenador / Administrador  
+- **Auditoria e exportações** – suporte à governação e rastreabilidade operacional  
+
+---
+
+## Demonstração
+
+🎥  
+https://github.com/user-attachments/assets/874bae59-3add-41b2-8ee1-4f0f579df0b1
+
+---
+
+## Licença
+
+Licença MIT.  
+Projeto educativo e conceptual.  
+Não é destinado a utilização clínica em produção sem validação adequada.
+
+</details>
