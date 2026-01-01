@@ -36,14 +36,63 @@ https://github.com/user-attachments/assets/75dcecf5-9e81-425c-b6b1-46a63767bbd1
 
 > ⚠️ **Disclaimer**
 >
-> BedFlow is a **conceptual / demonstration project** designed for clinical operations modelling.
-> It must **not** be used with real identifiable patient data (PHI) without proper security review, compliance, and governance.
+> BedFlow is a **conceptual / demonstration project**.
+> It is designed for **clinical operations modelling and workflow exploration**.
+>  
+> It must **not** be used with real identifiable patient data (PHI) without appropriate security review, regulatory compliance, and information governance.
 
 ---
 
 ## Overview
 
-BedFlow is a clinical operations support platform designed from a nursing and care‑coordination perspective to support bed management, structured handover, and operational governance.
+**BedFlow** is a clinical operations support platform designed **from a nursing and care‑coordination perspective** to support:
+
+- Bed capacity management and real‑time visibility  
+- Structured clinical handover between shifts and teams  
+- Coordination across ambulatory, inpatient, and multi‑service settings  
+- Operational auditability, traceability, and governance  
+
+The platform focuses on **operational safety, continuity of care, and workflow reliability**, not on clinical decision‑making.
+
+---
+
+## Intended Audience
+
+- Nurses and nurse managers  
+- Bed management and clinical operations teams  
+- Health IT and digital health professionals  
+- Developers and architects exploring clinical workflow platforms  
+
+---
+
+## Core Capabilities
+
+- **Bed management** – allocation, visibility, and patient flow support  
+- **Shift handover** – structured updates and continuity across teams  
+- **Procedure and theatre planning** – operational alignment with available capacity  
+- **Role‑based access control (RBAC)** – Nurse / Coordinator / Administrator  
+- **Audit and exports** – operational governance, traceability, and reporting  
+
+---
+
+## Architecture Overview
+
+```
+Frontend (React + Vite)
+        ↓ REST API
+Backend (NestJS)
+        ↓ Prisma ORM
+Database (SQLite / PostgreSQL)
+```
+
+---
+
+## Technology Stack
+
+- Frontend: React (Vite)
+- Backend: NestJS
+- ORM: Prisma
+- Database: SQLite (default) / PostgreSQL (optional)
 
 ---
 
@@ -64,6 +113,25 @@ Default values are suitable for local development.
 
 > The `.env` file is intentionally excluded from version control.
 
+---
+
+## Security Notes (Minimum)
+
+- Do not expose database ports publicly  
+- Use a strong `JWT_SECRET`  
+- Restrict CORS to authorised frontend domains  
+- Remove demo credentials in any real deployment  
+- RBAC enforced server‑side  
+- Audit logging for critical operations  
+
+---
+
+## License
+
+MIT License.  
+Free to use, modify, and learn from.  
+Not intended for production clinical use without appropriate validation.
+
 </details>
 
 ---
@@ -75,8 +143,41 @@ Default values are suitable for local development.
 
 > ⚠️ **Aviso Importante**
 >
-> O BedFlow é um projeto conceptual / de demonstração.
-> Não deve ser utilizado com dados reais identificáveis de utentes sem validação adequada.
+> O BedFlow é um **projeto conceptual / de demonstração**, orientado para modelação de operações clínicas.
+>  
+> **Não deve ser utilizado com dados reais identificáveis de utentes (PHI)** sem avaliação prévia de segurança, conformidade legal e adequada governação da informação.
+
+---
+
+## Visão Geral
+
+O **BedFlow** é uma plataforma de suporte à operação clínica, concebida **a partir da perspetiva da Enfermagem e da coordenação de cuidados**, com o objetivo de apoiar:
+
+- A gestão da capacidade e visibilidade de camas  
+- A passagem de turno estruturada entre equipas  
+- A coordenação em contexto de internamento, ambulatório e múltiplos serviços  
+- A rastreabilidade, auditoria e governação operacional  
+
+O foco da plataforma é a **segurança operacional**, a **continuidade de cuidados** e a **fiabilidade dos processos**, não a decisão clínica.
+
+---
+
+## Destinatários
+
+- Enfermeiros e enfermeiros gestores  
+- Equipas de gestão de camas e operações clínicas  
+- Profissionais de Sistemas de Informação em Saúde  
+- Developers e arquitetos de soluções digitais em saúde  
+
+---
+
+## Funcionalidades Principais
+
+- **Gestão de camas** – alocação, visibilidade e apoio ao fluxo do doente  
+- **Passagem de turno** – comunicação estruturada e continuidade assistencial  
+- **Planeamento de procedimentos e atividade operatória** – alinhamento com a capacidade instalada  
+- **Controlo de acessos por perfis (RBAC)** – Enfermeiro / Coordenador / Administrador  
+- **Auditoria e exportações** – suporte à governação e rastreabilidade operacional  
 
 ---
 
@@ -95,7 +196,15 @@ cp env.example .env
 
 Os valores por defeito são adequados para desenvolvimento local.
 
-> O ficheiro `.env` encontra‑se excluído do controlo de versões.
+> O ficheiro `.env` encontra‑se intencionalmente excluído do controlo de versões.
+
+---
+
+## Licença
+
+Licença MIT.  
+Projeto educativo e conceptual.  
+Não destinado a utilização clínica em produção sem validação adequada.
 
 </details>
 
@@ -104,7 +213,7 @@ Os valores por defeito são adequados para desenvolvimento local.
 ## Contact
 
 - **Name:** Nuno da Silva Magalhães  
-- **Background:** Nursing & Clinical Operations
-- **Email:** nsilvalsd@gmail.com
-- **GitHub:** https://github.com/NunoSid 
-- **LinkedIn:** www.linkedin.com/in/nuno-da-silva-magalhães-421253199
+- **Background:** Nursing & Clinical Operations  
+- **Email:** nsilvalsd@gmail.com  
+- **GitHub:** https://github.com/NunoSid  
+- **LinkedIn:** https://www.linkedin.com/in/nuno-da-silva-magalhães-421253199
