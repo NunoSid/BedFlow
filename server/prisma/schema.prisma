@@ -1,0 +1,200 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  username     String   @unique
+  passwordHash String
+  fullName     String
+  role         String   // 'ADMIN' | 'NURSE'
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+
+  auditLogs    AuditLog[]
+  planningEntries PlanningEntry[]
+}
+
+model Setting {
+  key   String @id
+  value String
+}
+
+model Floor {
+  id    String @id @default(uuid())
+  name  String @unique // "Piso 1", "Serviço de Cirurgia"
+  type  String @default("FLOOR") // "FLOOR" | "SERVICE"
+  beds  Bed[]
+  rooms Room[]
+}
+
+model Room {
+  id      String @id @default(uuid())
+  name    String
+  floorId String
+  floor   Floor  @relation(fields: [floorId], references: [id])
+  beds    Bed[]
+
+  @@unique([floorId, name])
+}
+
+model Bed {
+  id        String @id @default(uuid())
+  code      String @unique // "3.1.1", "3.1.2"
+  floorId   String
+  floor     Floor  @relation(fields: [floorId], references: [id])
+  roomId    String?
+  room      Room?  @relation(fields: [roomId], references: [id])
+  sortOrder Int    // Ordem do Excel
+
+  // Bloqueio
+  isLocked       Boolean   @default(false)
+  lockedByUserId String?
+  lockReason     String?
+  lockedAt       DateTime?
+
+  // Estado Atual (Grelha Clínica)
+  // Relação 1-1: Cada cama tem 1 estado atual visível
+  clinicalState  BedClinicalState?
+
+  // Histórico de Ocupações
+  admissions     Admission[]
+
+  auditLogs      AuditLog[]
+  planningEntries PlanningEntry[]
+}
+
+// Representa a linha do Excel (Dados Clínicos Atuais)
+model BedClinicalState {
+  id     String @id @default(uuid())
+  bedId  String @unique
+  bed    Bed    @relation(fields: [bedId], references: [id])
+
+  cvp_exists Boolean @default(false)
+  therapy_exists Boolean @default(false)
+  dib_exists Boolean @default(false)
+
+  // Drenos
+  drains_exists   Boolean @default(false)
+  drains_location String?
+  drains_volume   String?
+  drains_aspect   String?
+  drains_obs      String?
+
+  // Dejeção
+  output_exists      Boolean @default(false)
+  output_count       String?
+  output_consistency String?
+  output_obs         String?
+
+  // Mição
+  urination_exists Boolean @default(false)
+  urination_volume String?
+  urination_obs    String?
+
+  // Pensos
+  dressings_location   String?
+  dressings_type       String?
+  dressings_status     String?
+  dressings_lastChange DateTime?
+  dressings_obs        String?
+
+  updatedAt DateTime @updatedAt
+}
+
+model Utente {
+  id            String      @id @default(uuid())
+  name          String
+  birthDate     DateTime?   // Para cálculo da idade
+  processNumber String?     
+  subsystem     String?     
+  admissions    Admission[]
+}
+
+// Ocupação (Internamento)
+model Admission {
+  id        String    @id @default(uuid())
+  
+  bedId     String
+  bed       Bed       @relation(fields: [bedId], references: [id])
+  
+  utenteId  String
+  utente    Utente    @relation(fields: [utenteId], references: [id])
+
+  surgeon   String
+  surgery   String    // Tipo de cirurgia
+  ageYears  Int?
+  sex       String?
+  entryDate DateTime
+  dischargeDate DateTime? // Prevista ou Real
+  
+  isActive  Boolean   @default(true) // True enquanto estiver internado
+
+  notes     ClinicalNote[]
+}
+
+model ClinicalNote {
+  id          String    @id @default(uuid())
+  admissionId String
+  admission   Admission @relation(fields: [admissionId], references: [id])
+  
+  content     String
+  type        String    // 'PASSAGEM_TURNO', 'EVOLUCAO'
+  createdAt   DateTime  @default(now())
+  createdBy   String    // ID do enfermeiro (sem relação forçada para não apagar se user for apagado, mas idealmente seria relação)
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  
+  targetBedId String?
+  targetBed   Bed?     @relation(fields: [targetBedId], references: [id])
+
+  floorName   String?
+  bedCode     String?
+  
+  action      String   // UPDATE_CLINICAL, LOCK_BED, ADMIT_PATIENT
+  reason      String   // Obrigatório
+  
+  entity      String   // 'BedClinicalState', 'Admission'
+  entityId    String
+  
+  beforeState String?  // JSON
+  afterState  String?  // JSON
+  diff        String?  // JSON
+  
+  timestamp   DateTime @default(now())
+}
+
+model PlanningEntry {
+  id               String   @id @default(uuid())
+  planDate         DateTime
+  bedId            String?
+  bed              Bed?     @relation(fields: [bedId], references: [id])
+  bedCode          String
+  utenteName       String?
+  utenteProcessNumber String?
+  ageYears         Int?
+  sex              String?
+  surgeon          String?
+  specialty        String?
+  surgery          String?
+  subsystem        String?
+  allergies        String?
+  observations     String?
+  entryDate        DateTime?
+  dischargeDate    DateTime?
+  createdByUserId  String
+  createdBy        User     @relation(fields: [createdByUserId], references: [id])
+  createdAt        DateTime @default(now())
+
+  @@unique([planDate, bedCode])
+}

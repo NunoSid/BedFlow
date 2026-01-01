@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres_bedflow:
+    image: postgres:15-alpine
+    container_name: bedflow_db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secure_password_123
+      POSTGRES_DB: bedflow_prod
+    ports:
+      - "5433:5432"
+    volumes:
+      - pg_data_bedflow:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  pg_data_bedflow:
