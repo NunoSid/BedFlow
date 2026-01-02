@@ -1,6 +1,6 @@
 <div align="center">
   <img
-    src="https://github.com/user-attachments/assets/7c6ecae8-ce9e-40f6-bb66-1c601ed4f977"
+    src="https://github.com/user-attachments/assets/fe8a16bc-0ffb-4bc0-a64f-72467c2e7ed9"
     width="672"
     height="448"
     alt="BedFlow logo"
